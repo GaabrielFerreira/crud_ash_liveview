@@ -1,6 +1,10 @@
 defmodule Atividade0903Web.Router do
   use Atividade0903Web, :router
 
+  pipeline :graphql do
+    plug AshGraphql.Plug
+  end
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -12,6 +16,17 @@ defmodule Atividade0903Web.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+  end
+
+  scope "/gql" do
+    pipe_through [:graphql]
+
+    forward "/playground", Absinthe.Plug.GraphiQL,
+      schema: Module.concat(["Atividade0903Web.GraphqlSchema"]),
+      socket: Module.concat(["Atividade0903Web.GraphqlSocket"]),
+      interface: :simple
+
+    forward "/", Absinthe.Plug, schema: Module.concat(["Atividade0903Web.GraphqlSchema"])
   end
 
   scope "/", Atividade0903Web do

@@ -17,7 +17,9 @@ defmodule Atividade0903.Application do
       # Start a worker by calling: Atividade0903.Worker.start_link(arg)
       # {Atividade0903.Worker, arg},
       # Start to serve requests, typically the last entry
-      Atividade0903Web.Endpoint
+      Atividade0903Web.Endpoint,
+      {Absinthe.Subscription, Atividade0903Web.Endpoint},
+      AshGraphql.Subscription.Batcher
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
