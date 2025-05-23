@@ -2,7 +2,7 @@ defmodule Atividade0903Web.GraphqlSchema do
   use Absinthe.Schema
 
   use AshGraphql,
-    domains: []
+    domains: [Atividade0903.Aula]
 
   import_types Absinthe.Plug.Types
 

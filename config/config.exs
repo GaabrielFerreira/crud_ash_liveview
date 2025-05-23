@@ -50,7 +50,8 @@ config :spark,
 
 config :atividade09_03,
   ecto_repos: [Atividade0903.Repo],
-  generators: [timestamp_type: :utc_datetime]
+  generators: [timestamp_type: :utc_datetime],
+  ash_domains: [Atividade0903.Aula]
 
 # Configures the endpoint
 config :atividade09_03, Atividade0903Web.Endpoint,
