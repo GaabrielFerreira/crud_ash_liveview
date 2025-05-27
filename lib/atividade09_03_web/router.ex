@@ -32,7 +32,7 @@ defmodule Atividade0903Web.Router do
   scope "/", Atividade0903Web do
     pipe_through :browser
 
-    get "/", PageController, :home
+    live "/", AlunoLive, :index
   end
 
   # Other scopes may use custom stacks.
